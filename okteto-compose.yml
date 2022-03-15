@@ -1,0 +1,67 @@
+name: movies
+
+endpoints:
+  - service: frontend
+    path: /
+    port: 80
+  - service: api
+    path: /api
+    port: 8080
+
+services:
+
+  frontend:
+    build: frontend
+    ports:
+      - 80
+    volumes:
+      - frontend:/src
+    command: yarn start
+
+  api:
+    build: api
+    environment:
+      - MONGODB_USERNAME=okteto
+      - MONGODB_PASSWORD=mongodb123
+      - MONGODB_DATABASE=okteto
+      - MONGODB_HOST=mongodb
+    ports:
+      - 8080
+    volumes:
+      - api:/usr/src/app
+    command: yarn start
+    depends_on:
+      init:
+        condition: service_completed_successfully
+
+  init:
+    build: api
+    environment:
+      - MONGODB_USERNAME=okteto
+      - MONGODB_PASSWORD=mongodb123
+      - MONGODB_DATABASE=okteto
+      - MONGODB_HOST=mongodb
+    command: yarn load
+    restart: never
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  mongodb:
+    image: docker.io/bitnami/mongodb:4.0.12-debian-9-r43
+    environment:
+      - MONGODB_USERNAME=okteto
+      - MONGODB_PASSWORD=mongodb123
+      - MONGODB_DATABASE=okteto
+      - MONGODB_ROOT_PASSWORD=mongodb123root
+      - MONGODB_SYSTEM_LOG_VERBOSITY=0
+      - MONGODB_DISABLE_SYSTEM_LOG=no
+      - MONGODB_ENABLE_IPV6=no
+      - MONGODB_ENABLE_DIRECTORY_PER_DB=no
+    ports:
+      - 27017
+    volumes:
+      - data:/bitnami/mongodb
+
+volumes:
+  data:
