@@ -31,8 +31,8 @@ services:
       - api:/usr/src/app
     command: yarn start
     depends_on:
-      init:
-        condition: service_completed_successfully
+      mongodb:
+        condition: service_healthy
 
   init:
     build: api
