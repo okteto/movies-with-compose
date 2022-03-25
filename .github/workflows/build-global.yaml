@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build
-        uses: okteto/build@master
+        uses: okteto/build@main
         with:
           global: true
         env:
