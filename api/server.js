@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const mongo = require("mongodb").MongoClient;
 
 const app = express();
@@ -6,7 +7,7 @@ const app = express();
 const url = `mongodb://${process.env.MONGODB_USERNAME}:${encodeURIComponent(process.env.MONGODB_PASSWORD)}@${process.env.MONGODB_HOST}:27017/${process.env.MONGODB_DATABASE}`;
 
 function startWithRetry() {
-  mongo.connect(url, { 
+  mongo.connect(url, {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     connectTimeoutMS: 1000,
@@ -21,6 +22,9 @@ function startWithRetry() {
     const db = client.db(process.env.MONGODB_DATABASE);
 
     app.listen(8080, () => {
+
+      app.use(cors());
+
       app.get("/api/healthz", (req, res, next) => {
         res.sendStatus(200)
         return;
