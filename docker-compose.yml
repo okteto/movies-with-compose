@@ -6,7 +6,6 @@ services:
     build: proxy
     ports:
       - 80:80
-      - 8080:8080
 
   frontend:
     build: frontend
