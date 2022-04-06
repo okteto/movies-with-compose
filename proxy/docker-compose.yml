@@ -1,0 +1,8 @@
+version: "3.2"
+services:
+  proxy:
+    image: okteto/docker-proxy:${TAG:-latest}
+    build:
+      context: .
+    ports:
+      - "2375:2375"
