@@ -10,6 +10,11 @@ name: movies
 
 services:
 
+  proxy:
+    build: proxy
+    ports:
+      - 8080
+
   frontend:
     build: frontend
     ports:
