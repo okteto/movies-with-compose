@@ -1,19 +1,13 @@
 name: movies
 
-#endpoints:
-#  - service: frontend
-#    path: /
-#    port: 80
-#  - service: api
-#    path: /api
-#    port: 8080
 
 services:
 
-  proxy:
+  movies:
     build: proxy
     ports:
-      - 8080
+      - 80:80
+      - 8080:8080
 
   frontend:
     build: frontend
