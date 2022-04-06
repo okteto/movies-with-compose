@@ -3,6 +3,7 @@ name: movies
 services:
 
   frontend:
+    scale: 8
     build: frontend
     ports:
       - 80:80
@@ -11,6 +12,7 @@ services:
     command: yarn start
 
   api:
+    scale: 4
     build: api
     environment:
       - MONGODB_USERNAME=okteto
