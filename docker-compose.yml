@@ -8,16 +8,16 @@ services:
       - 80:80
 
   frontend:
-    scale: 8
+    scale: 1
     build: frontend
     ports:
-      - 80:80
+      - 80
     volumes:
       - frontend:/src
     command: yarn start
 
   api:
-    scale: 4
+    scale: 1
     build: api
     environment:
       - MONGODB_USERNAME=okteto
@@ -25,7 +25,7 @@ services:
       - MONGODB_DATABASE=okteto
       - MONGODB_HOST=mongodb
     ports:
-      - 8080:8080
+      - 8080
     volumes:
       - api:/usr/src/app
     command: yarn start

@@ -63,7 +63,7 @@ module.exports = {
       poll: true
     },
     proxy: {
-      '/api': 'https://api-gabriel-okteto.cloud.okteto.net'
+      '/api': 'http://movies-api:8080'
     }
   },
   cache: {
