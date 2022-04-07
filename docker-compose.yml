@@ -6,13 +6,12 @@ services:
     build: reverse-proxy
     ports:
       - 80:80
-      - 8080:8080
 
   frontend:
     scale: 8
     build: frontend
     ports:
-      - 80:80
+      - 80
     volumes:
       - frontend:/src
     command: yarn start
@@ -26,7 +25,7 @@ services:
       - MONGODB_DATABASE=okteto
       - MONGODB_HOST=mongodb
     ports:
-      - 8080:8080
+      - 8080
     volumes:
       - api:/usr/src/app
     command: yarn start
