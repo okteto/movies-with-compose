@@ -1,0 +1,24 @@
+on:
+  push:
+    branches:
+      - main
+
+name: Build to Okteto Global Registry
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: okteto/context@latest
+        with:
+          token: ${{ secrets.OKTETO_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@master
+
+      - name: Build
+        uses: okteto/build@main
+        with:
+          global: true
+        env:
+          OKTETO_GIT_COMMIT: ${{ github.sha }}
