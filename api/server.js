@@ -1,5 +1,4 @@
 const express = require("express");
-const cors = require("cors");
 const mongo = require("mongodb").MongoClient;
 
 const app = express();
@@ -22,9 +21,6 @@ function startWithRetry() {
     const db = client.db(process.env.MONGODB_DATABASE);
 
     app.listen(8080, () => {
-
-      app.use(cors());
-
       app.get("/api/healthz", (req, res, next) => {
         res.sendStatus(200)
         return;
