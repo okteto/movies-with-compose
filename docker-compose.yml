@@ -5,6 +5,10 @@ services:
     build: reverse-proxy
     ports:
       - 80:80
+    depends_on:
+      - api
+      - frontend
+    restart: always
 
   frontend:
     build: frontend
