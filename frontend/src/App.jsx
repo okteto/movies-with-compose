@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('https://api-gabriel-okteto.cloud.okteto.net/api/movies')
+    fetch('/api/movies')
       .then(res => res.json())
       .then(result => {
         this.setState({
@@ -42,7 +42,7 @@ class App extends Component {
         });
       });
 
-    fetch('https://api-gabriel-okteto.cloud.okteto.net/api/watching')
+    fetch('/api/watching')
       .then(res => res.json())
       .then(result => {
         this.setState({

@@ -2,6 +2,12 @@ name: movies
 
 services:
 
+  movies:
+    build: reverse-proxy
+    ports:
+      - 80:80
+      - 8080:8080
+
   frontend:
     scale: 8
     build: frontend
