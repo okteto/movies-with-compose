@@ -8,7 +8,6 @@ services:
       - 80:80
 
   frontend:
-    scale: 1
     build: frontend
     ports:
       - 80
@@ -17,7 +16,6 @@ services:
     command: yarn start
 
   api:
-    scale: 1
     build: api
     environment:
       - MONGODB_USERNAME=okteto
