@@ -1,15 +1,4 @@
 
-x-common-variables: &common-variables
-  MONGODB_USERNAME: okteto
-  MONGODB_PASSWORD: mongodb123
-  MONGODB_DATABASE: okteto
-  MONGODB_HOST: mongodb
-  MONGODB_ROOT_PASSWORD: mongodb123root
-  MONGODB_SYSTEM_LOG_VERBOSITY: 0
-  MONGODB_DISABLE_SYSTEM_LOG: no
-  MONGODB_ENABLE_IPV6: no
-  MONGODB_ENABLE_DIRECTORY_PER_DB: no
-
 services:
 
   movies:
@@ -32,7 +21,10 @@ services:
   api:
     build: api
     environment:
-      <<: *common-variables
+      - MONGODB_USERNAME=okteto
+      - MONGODB_PASSWORD=mongodb123
+      - MONGODB_DATABASE=okteto
+      - MONGODB_HOST=mongodb
     ports:
       - 8080
     volumes:
@@ -45,7 +37,10 @@ services:
   init:
     build: api
     environment:
-      <<: *common-variables
+      - MONGODB_USERNAME=okteto
+      - MONGODB_PASSWORD=mongodb123
+      - MONGODB_DATABASE=okteto
+      - MONGODB_HOST=mongodb
     command: yarn load
     restart: never
     depends_on:
@@ -55,7 +50,14 @@ services:
   mongodb:
     image: docker.io/bitnami/mongodb:4.0.12-debian-9-r43
     environment:
-      <<: *common-variables
+      - MONGODB_USERNAME=okteto
+      - MONGODB_PASSWORD=mongodb123
+      - MONGODB_DATABASE=okteto
+      - MONGODB_ROOT_PASSWORD=mongodb123root
+      - MONGODB_SYSTEM_LOG_VERBOSITY=0
+      - MONGODB_DISABLE_SYSTEM_LOG=no
+      - MONGODB_ENABLE_IPV6=no
+      - MONGODB_ENABLE_DIRECTORY_PER_DB=no
     ports:
       - 27017
     volumes:
