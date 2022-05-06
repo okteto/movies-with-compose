@@ -28,7 +28,7 @@ services:
     ports:
       - 8080
     volumes:
-      - api:/usr/src/app
+      - api:/src
     command: yarn start
     depends_on:
       mongodb:
