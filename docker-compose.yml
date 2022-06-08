@@ -11,7 +11,9 @@ services:
     restart: always
 
   frontend:
-    build: frontend
+    build: 
+      context: frontend
+      dockerfile: aDockerfile
     ports:
       - 80
     volumes:
