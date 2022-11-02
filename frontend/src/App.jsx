@@ -72,10 +72,12 @@ class App extends Component {
       <div className="App">
         <header className={`Header ${this.state.fixHeader ? 'fixed' : ''}`}>
           <div className="content">
-            <div className="logo">Movies</div>
+            <div className="logo">Poopity Scoop</div>
             <ul className="menu">
               <li className="selected">Home</li>
               <li>Movies</li>
+              <li>Kanye West Freakouts</li>
+              <li>Your Mom</li>
               <li>My List</li>
             </ul>
             <UserProfile user={session} />
@@ -144,8 +146,7 @@ class Hero extends Component {
         <div className="content">
           <h1>Bohemian Rhapsody</h1>
           <p>
-            Queen take the music world by storm when they form the rock &apos;n&apos; roll
-            band in 1970.
+            MAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA OOOOOOOOOOOOOOOOOOOOOOOOOoooooooooooOOOOOOOOOOOOOOOoooooooooOOOOOOOOOOOOOOooooooooooooooooo...
           </p>
           <div className="button-container">
             <HeroButton class="play-button">
