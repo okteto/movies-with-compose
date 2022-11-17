@@ -7,4 +7,3 @@ This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to
 - A [MongoDB](https://www.mongodb.com) database.
 - A [NGinx](https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/) reverse-proxy
 - A job to initialize MongoDB with data.
-
