@@ -1,0 +1,2 @@
+deploy:
+  - okteto deploy -f docker-compose.yaml --build
