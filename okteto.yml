@@ -1,0 +1,8 @@
+dependencies:
+  backend:
+    repository: https://github.com/andreafalzetti/k8s-status-api
+    branch: main
+    wait: true
+
+deploy:
+  - 'okteto deploy -f docker-compose.yml --build'
