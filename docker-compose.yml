@@ -2,7 +2,7 @@
 services:
 
   movies:
-    build: reverse-proxy
+    image: okteto/movies-with-compose:proxy
     ports:
       - 80:80
     depends_on:
@@ -11,7 +11,7 @@ services:
     restart: always
 
   frontend:
-    build: frontend
+    image: okteto/movies-with-compose:frontend
     ports:
       - 80
     volumes:
@@ -19,7 +19,7 @@ services:
     command: yarn start
 
   api:
-    build: api
+    image: okteto/movies-with-compose:api
     environment:
       - MONGODB_USERNAME=okteto
       - MONGODB_PASSWORD=mongodb123
@@ -35,7 +35,7 @@ services:
         condition: service_healthy
 
   init:
-    build: api
+    image: okteto/movies-with-compose:api
     environment:
       - MONGODB_USERNAME=okteto
       - MONGODB_PASSWORD=mongodb123
