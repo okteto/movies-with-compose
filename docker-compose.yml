@@ -48,7 +48,7 @@ services:
         condition: service_healthy
 
   mongodb:
-    image: docker.io/bitnami/mongodb:5.0
+    image: docker.io/bitnami/mongodb@sha256:a4dc5421b115090e3612b58d03fed11749d3a5f0a7e690755f73ddaa1dd8d4c8
     environment:
       - MONGODB_USERNAME=okteto
       - MONGODB_PASSWORD=mongodb123
