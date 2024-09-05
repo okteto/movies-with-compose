@@ -5,5 +5,5 @@ This example shows how to leverage [Okteto](https://github.com/okteto/okteto) to
 - A *React* based front-end, using [webpack](https://webpack.js.org) as bundler and *hot-reload server* for development.
 - A very simple Node.js API using [Express](https://expressjs.com).
 - A [MongoDB](https://www.mongodb.com) database.
-- A [NGinx](https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/) reverse-proxy
+- A [NGINX](https://www.section.io/engineering-education/build-and-dockerize-a-full-stack-react-app-with-nodejs-and-nginx/) reverse-proxy
 - A job to initialize MongoDB with data.
