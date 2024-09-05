@@ -65,3 +65,5 @@ services:
 
 volumes:
   data:
+    driver_opts:
+      size: 2Gi
