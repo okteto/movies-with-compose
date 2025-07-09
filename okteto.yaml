@@ -1,0 +1,6 @@
+deploy:
+ compose: 
+  file: docker-compose.yml
+  services:
+  - frontend
+
