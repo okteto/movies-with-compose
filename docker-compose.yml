@@ -48,20 +48,22 @@ services:
         condition: service_healthy
 
   mongodb:
-    image: docker.io/bitnami/mongodb:5.0
+    image: mongo:7
     environment:
-      - MONGODB_USERNAME=okteto
-      - MONGODB_PASSWORD=mongodb123
-      - MONGODB_DATABASE=okteto
-      - MONGODB_ROOT_PASSWORD=mongodb123root
-      - MONGODB_SYSTEM_LOG_VERBOSITY=0
-      - MONGODB_DISABLE_SYSTEM_LOG=no
-      - MONGODB_ENABLE_IPV6=no
-      - MONGODB_ENABLE_DIRECTORY_PER_DB=no
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongodb123root
+      - MONGO_INITDB_DATABASE=okteto
     ports:
       - 27017
     volumes:
-      - data:/bitnami/mongodb
+      - data:/data/db
+      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
 
 volumes:
   data:
