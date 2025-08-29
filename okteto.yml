@@ -6,7 +6,7 @@ dev:
     image: okteto/movies-with-compose:api
     command: bash
     workdir: /src
-    volumes:
+    sync:
       - .:/src
     forward:
       - 8080:8080
@@ -20,7 +20,7 @@ dev:
     image: okteto/movies-with-compose:frontend
     command: bash
     workdir: /src
-    volumes:
+    sync:
       - .:/src
     forward:
       - 3000:3000
