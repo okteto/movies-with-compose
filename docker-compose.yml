@@ -57,7 +57,7 @@ services:
       - 27017
     volumes:
       - data:/data/db
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - ./mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     healthcheck:
       test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
       interval: 10s
@@ -68,4 +68,4 @@ services:
 volumes:
   data:
     driver_opts:
-      size: 2Gi
+      size: 1Gi
